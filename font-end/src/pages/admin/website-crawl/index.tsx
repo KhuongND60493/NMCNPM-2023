@@ -19,6 +19,7 @@ export default function AdminWebsiteCrawl() {
   let { websiteId } = useParams();
   const navigate = useNavigate();
   const [isAutoRunJob, setAutoRunJob] = useState(false);
+  const [enableJob, setEnableJob] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [data, setData] = useState<IWebsiteCrawl[]>([]);
@@ -35,6 +36,7 @@ export default function AdminWebsiteCrawl() {
     }
     setData(rs.data);
     setAutoRunJob(rs.autoJob);
+    setEnableJob(rs.enabledJob);
     setLoading(false);
   }
 
@@ -70,16 +72,18 @@ export default function AdminWebsiteCrawl() {
         }}
       >
         <Box sx={{ flex: 1 }} pr={4}>
-          <Box alignItems={'center'} display={'flex'} justifyContent={'space-between'}>
-            <Box display={'flex'} alignItems={'center'} gap={2}>
-              <Typography color={isAutoRunJob ? 'green' : 'error'} fontWeight={'bold'}>
-                {isAutoRunJob ? 'Job running' : 'Job not running'}
-              </Typography>
+          {enableJob && (
+            <Box alignItems={'center'} display={'flex'} justifyContent={'space-between'}>
+              <Box display={'flex'} alignItems={'center'} gap={2}>
+                <Typography color={isAutoRunJob ? 'green' : 'error'} fontWeight={'bold'}>
+                  {isAutoRunJob ? 'Job running' : 'Job not running'}
+                </Typography>
+              </Box>
+              <Button variant={'contained'} onClick={handleToggleRunJob} color={isAutoRunJob ? 'error' : 'success'}>
+                {isAutoRunJob ? 'Stop' : 'Run'}
+              </Button>
             </Box>
-            <Button variant={'contained'} onClick={handleToggleRunJob} color={isAutoRunJob ? 'error' : 'success'}>
-              {isAutoRunJob ? 'Stop' : 'Run'}
-            </Button>
-          </Box>
+          )}
 
           <List>
             {data.map((x, index) => {

@@ -4,9 +4,10 @@ import { Conference, ConferencePagination, ConferenceWebsite } from '@/features/
 export const getAllEvents = async (
   websiteId?: string | number,
   page?: string | null,
+  keyword?: string | null,
 ): Promise<IResp<string | { data: Conference[]; paging: ConferencePagination; website: ConferenceWebsite[] }>> => {
   try {
-    const rs = await eventRequest.getAll({ page, websiteId });
+    const rs = await eventRequest.getAll({ page, websiteId, keyword: keyword || '' });
     return {
       status: true,
       data: { data: rs?.data?.conferences || [], paging: rs?.data?.pagination, website: rs?.data?.websites || [] },

@@ -1,36 +1,44 @@
 import nodeCron from 'node-cron';
-import chalk from 'chalk';
-import ora from 'ora';
-import {appConfigs} from './configs';
-import puppeteer from "puppeteer";
+import {appConfigs, settingKeys} from './configs';
 import {crawlConferencesByWebsiteId, getAllWebsiteWillCrawl} from "../services/crawl.service";
-import moment from "moment/moment";
 
-const url = "https://www.worldometers.info/world-population/";
+import logger from "./logger";
+import Setting from "../models/setting.model";
 
-async function scrapeWorldConference() {
-    console.log(chalk.green("Running scheduled job"));
-    const spinner = ora({
-        text: "Launcing puppeteer",
-        color: "blue",
-        hideCursor: false,
-    }).start();
-
+export async function getDataAutoJob() {
+    let rs = false;
     try {
-        const date = Date.now();
-        const websiteIds=await getAllWebsiteWillCrawl(date);
-        const arrJobs=  websiteIds.map(id=>crawlConferencesByWebsiteId(    `${id}`))
-        Promise.allSettled(arrJobs).then(a=>{
-            spinner.succeed(`Page scraping successfull after ${Date.now() - date}ms`);
-            spinner.clear();
-        })
-    } catch (error) {
-        spinner.text = 'Scraping failed';
-        spinner.fail();
-        spinner.clear();
-        console.log(error);
+        const setting = await Setting.findOne({
+            where: {key: settingKeys.runJob},
+        });
+        if (setting) {
+            rs = setting.value === "T";
+        }
+    } catch (e) {
+    } finally {
+        return rs;
     }
 }
 
-const job = appConfigs.AUTO_START_JOB ? nodeCron.schedule(appConfigs.JOB_LOOP, scrapeWorldConference) : undefined;
+async function scrapeWorldConference() {
+    const date = Date.now();
+    const willRunJob = await getDataAutoJob();
+    try {
+        if (willRunJob) {
+            const websiteIds = await getAllWebsiteWillCrawl(date);
+            logger.info(`[Job]: Start job crawl ${websiteIds.length} website(s)`);
+            if(websiteIds.length>0){
+                const arrJobs = websiteIds.map(id => crawlConferencesByWebsiteId(`${id}`))
+                Promise.allSettled(arrJobs).then(a => {
+                })
+            }
+
+        }
+
+    } catch (e: any) {
+        logger.info(`[Job]: Error ${e.toString()}`);
+    }
+}
+
+const job = nodeCron.schedule(appConfigs.JOB_LOOP, scrapeWorldConference);
 export default job;

@@ -5,8 +5,6 @@
   "license": "MIT",
   "scripts": {
     "ci": "rm -rf node_modules && rm -rf dist && yarn",
-    "postinstalls": "yarn install:server-app",
-    "install:server-app": "cd ../back-end/src/Web && dotnet restore  && dotnet build",
     "dev": "vite",
     "build": "vite build"
   },

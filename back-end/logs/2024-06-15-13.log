@@ -1,0 +1,38 @@
+[2024-06-15T06:48:01.061Z][info]: 	not job at 1718434081060
+[2024-06-15T06:49:00.602Z][info]: 	not job at 1718434140602
+[2024-06-15T06:50:00.976Z][info]: 	r job at 1718434200975
+[2024-06-15T06:51:00.638Z][info]: 	r job at 1718434260638
+[2024-06-15T06:52:00.285Z][info]: 	r job at 1718434320284
+[2024-06-15T06:53:00.324Z][info]: 	r job at 1718434380322
+[2024-06-15T06:54:00.524Z][info]: 	r job at 1718434440523
+[2024-06-15T06:54:07.226Z][error]: 	unhandledRejection: net::ERR_CONNECTION_TIMED_OUT at https://www.lix.polytechnique.fr/~hermann/conf.php
+Error: net::ERR_CONNECTION_TIMED_OUT at https://www.lix.polytechnique.fr/~hermann/conf.php
+    at navigate (C:\Users\Romio\Desktop\nmcnpm-2023\back-end\node_modules\puppeteer-core\src\cdp\Frame.ts:211:13)
+    at Function.race (C:\Users\Romio\Desktop\nmcnpm-2023\back-end\node_modules\puppeteer-core\src\util\Deferred.ts:49:14)
+    at CdpFrame.goto (C:\Users\Romio\Desktop\nmcnpm-2023\back-end\node_modules\puppeteer-core\src\cdp\Frame.ts:164:17)
+    at CdpPage.goto (c:/Users/Romio/Desktop/nmcnpm-2023/back-end/node_modules/puppeteer-core/lib/esm/puppeteer/api/Page.js:561:20)
+    at normalCrawlService (c:\Users\Romio\Desktop\nmcnpm-2023\back-end\src\services\normal-crawl.service.ts:12:24)
+[2024-06-15T06:54:16.847Z][error]: 	uncaughtException: write after end
+Error: write after end
+    at writeAfterEnd (C:\Users\Romio\Desktop\nmcnpm-2023\back-end\node_modules\readable-stream\lib\_stream_writable.js:264:12)
+    at Writable.write (C:\Users\Romio\Desktop\nmcnpm-2023\back-end\node_modules\readable-stream\lib\_stream_writable.js:300:21)
+    at File.log (C:\Users\Romio\Desktop\nmcnpm-2023\back-end\node_modules\winston\lib\winston\transports\file.js:222:34)
+    at RejectionStream._write (C:\Users\Romio\Desktop\nmcnpm-2023\back-end\node_modules\winston\lib\winston\rejection-stream.js:46:29)
+    at doWrite (C:\Users\Romio\Desktop\nmcnpm-2023\back-end\node_modules\readable-stream\lib\_stream_writable.js:390:139)
+    at writeOrBuffer (C:\Users\Romio\Desktop\nmcnpm-2023\back-end\node_modules\readable-stream\lib\_stream_writable.js:381:5)
+    at Writable.write (C:\Users\Romio\Desktop\nmcnpm-2023\back-end\node_modules\readable-stream\lib\_stream_writable.js:302:11)
+    at DerivedLogger.ondata (C:\Users\Romio\Desktop\nmcnpm-2023\back-end\node_modules\readable-stream\lib\_stream_readable.js:629:20)
+    at DerivedLogger.emit (node:events:529:35)
+    at addChunk (C:\Users\Romio\Desktop\nmcnpm-2023\back-end\node_modules\readable-stream\lib\_stream_readable.js:279:12)
+[2024-06-15T06:55:00.682Z][info]: 	r job at 1718434500680
+[2024-06-15T06:56:00.300Z][info]: 	r job at 1718434560300
+[2024-06-15T06:57:00.530Z][info]: 	r job at 1718434620528
+[2024-06-15T06:57:28.325Z][error]: 	unhandledRejection: net::ERR_CONNECTION_TIMED_OUT at https://www.lix.polytechnique.fr/~hermann/conf.php
+Error: net::ERR_CONNECTION_TIMED_OUT at https://www.lix.polytechnique.fr/~hermann/conf.php
+    at navigate (C:\Users\Romio\Desktop\nmcnpm-2023\back-end\node_modules\puppeteer-core\src\cdp\Frame.ts:211:13)
+    at Function.race (C:\Users\Romio\Desktop\nmcnpm-2023\back-end\node_modules\puppeteer-core\src\util\Deferred.ts:49:14)
+    at CdpFrame.goto (C:\Users\Romio\Desktop\nmcnpm-2023\back-end\node_modules\puppeteer-core\src\cdp\Frame.ts:164:17)
+    at CdpPage.goto (c:/Users/Romio/Desktop/nmcnpm-2023/back-end/node_modules/puppeteer-core/lib/esm/puppeteer/api/Page.js:561:20)
+    at normalCrawlService (c:\Users\Romio\Desktop\nmcnpm-2023\back-end\src\services\normal-crawl.service.ts:13:24)
+[2024-06-15T06:58:00.722Z][info]: 	r job at 1718434680721
+[2024-06-15T06:59:00.937Z][info]: 	r job at 1718434740936

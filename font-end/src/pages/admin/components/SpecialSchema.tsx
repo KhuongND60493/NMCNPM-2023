@@ -14,7 +14,7 @@ const SpecialSchema = (props: SpecialSchemaProps) => {
         fullWidth={true}
         onChange={e => onSetSpecialKey(e.target.value)}
         name="special-key"
-        label="Special Key"
+        label="Special Key *"
       />
     </Box>
   );

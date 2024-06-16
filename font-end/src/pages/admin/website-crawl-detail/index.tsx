@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { Button, Checkbox, FormControlLabel, TextField } from '@mui/material';
+import { Button, Checkbox, FormControlLabel, TextField, Tooltip } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { deleteWebsite, getByIdSync, sendWebsiteData } from '@/features/website-crawl/websiteServices';
 import { DefaultWebSiteReq, IReqEditWebsite, IReqSchema } from '@/features/website-crawl/types';
@@ -62,6 +62,15 @@ export default function AdminWebsiteCrawlDetail(props: IAdminWebsiteCrawlDetail)
         valid = false;
         toast.error('Special key not empty');
       }
+    }
+
+    if (params.name || params.name === '') {
+      valid = false;
+      toast.error('Name website not empty');
+    }
+    if (params.url || params.url === '') {
+      valid = false;
+      toast.error('Url website not empty');
     }
     if (valid) {
       const rs = await sendWebsiteData(params, id ? parseInt(id) : undefined);
@@ -146,19 +155,21 @@ export default function AdminWebsiteCrawlDetail(props: IAdminWebsiteCrawlDetail)
           </Box>
 
           <Box pb={2}>
-            <TextField
-              type={'number'}
-              fullWidth={true}
-              name="url"
-              label="Time scrawl (m)"
-              value={params?.time || 0}
-              onChange={e => {
-                setParams(r => {
-                  return { ...r, time: parseInt(e.target.value) };
-                });
-              }}
-              required
-            />
+            <Tooltip title="If crawl time is 0, auto job will not be run">
+              <TextField
+                type={'number'}
+                fullWidth={true}
+                name="url"
+                label="Time crawl (minute)"
+                value={params?.time || 0}
+                onChange={e => {
+                  setParams(r => {
+                    return { ...r, time: parseInt(e.target.value) };
+                  });
+                }}
+                required
+              />
+            </Tooltip>
           </Box>
           <Box pb={2} position={'relative'}>
             {id ? (

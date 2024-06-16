@@ -1,0 +1,18 @@
+[2024-06-15T11:00:01.001Z][info]: 	[Job]: Start job crawl 2 website(s)
+[2024-06-15T11:00:02.663Z][info]: 	[Crawler-Special]: Crawl website - https://ccfddl.github.io/conference/allconf.yml successfully
+[2024-06-15T11:00:22.748Z][error]: 	[Crawler-Normal]: Error when crawl website -https://www.lix.polytechnique.fr/~hermann/conf.php
+[2024-06-15T11:01:00.595Z][info]: 	[Job]: Start job crawl 0 website(s)
+[2024-06-15T11:04:28.356Z][info]: 	[Job] change setting run job to true
+[2024-06-15T11:05:00.712Z][info]: 	[Job]: Start job crawl 2 website(s)
+[2024-06-15T11:05:02.343Z][info]: 	[Crawler-Special]: Crawl website - https://ccfddl.github.io/conference/allconf.yml successfully
+[2024-06-15T11:05:22.391Z][error]: 	[Crawler-Normal]: Error when crawl website -https://www.lix.polytechnique.fr/~hermann/conf.php
+[2024-06-15T11:05:24.091Z][info]: 	[Job] change setting run job to false
+[2024-06-15T11:14:34.853Z][info]: 	[Job] change setting run job to true
+[2024-06-15T11:15:00.123Z][info]: 	[Job]: Start job crawl 2 website(s)
+[2024-06-15T11:15:01.968Z][info]: 	[Crawler-Special]: Crawl website - https://ccfddl.github.io/conference/allconf.yml successfully
+[2024-06-15T11:15:21.876Z][error]: 	[Crawler-Normal]: Error when crawl website -https://www.lix.polytechnique.fr/~hermann/conf.php
+[2024-06-15T11:16:00.784Z][info]: 	[Job]: Start job crawl 0 website(s)
+[2024-06-15T11:17:00.458Z][info]: 	[Job]: Start job crawl 2 website(s)
+[2024-06-15T11:17:02.038Z][info]: 	[Crawler-Special]: Crawl website - https://ccfddl.github.io/conference/allconf.yml successfully
+[2024-06-15T11:17:22.092Z][error]: 	[Crawler-Normal]: Error when crawl website -https://www.lix.polytechnique.fr/~hermann/conf.php
+[2024-06-15T11:18:00.036Z][info]: 	[Job]: Start job crawl 0 website(s)

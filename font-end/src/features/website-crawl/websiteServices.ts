@@ -5,10 +5,11 @@ interface IGetAllWebResp {
   error: string;
   data: IWebsiteCrawl[];
   autoJob: boolean;
+  enabledJob: boolean;
 }
 
 export const getAllSync = async (): Promise<IGetAllWebResp> => {
-  const rs: IGetAllWebResp = { error: 'Cant get data website', data: [], autoJob: false };
+  const rs: IGetAllWebResp = { error: 'Cant get data website', data: [], autoJob: false, enabledJob: true };
   try {
     const params = await websiteRequest.getAll();
     const data = (params?.data.websites || []).map((x: any) => ({
@@ -21,6 +22,7 @@ export const getAllSync = async (): Promise<IGetAllWebResp> => {
       rs.error = '';
       rs.data = data;
       rs.autoJob = params?.data?.autoJob;
+      rs.enabledJob = params?.data?.enabledJob;
     } else if (params?.message) {
       rs.error = params.message;
     }

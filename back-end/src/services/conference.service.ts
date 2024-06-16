@@ -4,9 +4,11 @@ import connection from "../db/connection";
 import { getOffset } from "../utils/dbUtils";
 import { Op } from "sequelize";
 import Pagination from "../builds/modelPagination";
+import logger from "../app/logger";
 
-async function createOrUpdateConferences(params: ConferenceAttributes[]) {
+async function createOrUpdateConferences(params: ConferenceAttributes[],urlWebsite?:string) {
   const t = await connection.transaction();
+  let isSuccess=true;
   try {
     const promise = params.map((x) => {
       return Conference.findOrCreate({
@@ -44,10 +46,18 @@ async function createOrUpdateConferences(params: ConferenceAttributes[]) {
     });
     await Promise.allSettled(promise);
     await t.commit();
-    return true;
   } catch (e: any) {
     void t.rollback();
-    return false;
+    isSuccess=false;
+  }finally {
+    if(urlWebsite){
+      if (!isSuccess) {
+        logger.error('[Crawler-Special]: Error when crawl website -' + urlWebsite);
+      }else{
+        logger.info(`[Crawler-Special]: Crawl website - ${urlWebsite} successfully`);
+      }
+    }
+    return isSuccess;
   }
 }
 

@@ -1,6 +1,7 @@
 import {Dialect} from 'sequelize';
 import * as env from '../../env.json';
 import * as configsData from '../../data.json';
+
 const dbName = env.DB_NAME as string
 const dbUser = env.DB_USERNAME || 'sa'
 const dbHost = env.DB_SERVER || 'localhost'
@@ -48,8 +49,8 @@ const dataSpecialWebsite = {
     ccfddl: configsData.SPECIAL_WEBSITE_KEY.CCFDDL
 }
 
-const settingKeys={
-    runJob:configsData.SETTING_KEYS.RUN_JOB
+const settingKeys = {
+    runJob: configsData.SETTING_KEYS.RUN_JOB
 }
 
-export {appConfigs, databaseConfigs, dataConfigs, dataSpecialWebsite,settingKeys}
+export {appConfigs, databaseConfigs, dataConfigs, dataSpecialWebsite, settingKeys}

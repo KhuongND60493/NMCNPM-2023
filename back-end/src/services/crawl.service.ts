@@ -8,6 +8,7 @@ import { convertToTimeUTC0 } from "../utils/dateUtils";
 import { dataSpecialWebsite } from "../app/configs";
 import NormalSchema from "../builds/normalSchema";
 import { QueryTypes } from "sequelize";
+import logger from "../app/logger";
 
 export async function crawlConferencesByWebsiteId(id: string) {
   const currentTime = convertToTimeUTC0();
@@ -24,6 +25,8 @@ export async function crawlConferencesByWebsiteId(id: string) {
           (website as any)["WebsiteSchemas"][0].value || "";
         if (valueKeySchema === dataSpecialWebsite.ccfddl) {
           void ccfddlCrawlService(website.url, website.id, currentTime);
+        }else {
+          logger.error('[Crawler-Special]: Not implement function for crawl website -' + website.url);
         }
       }
     }
@@ -39,7 +42,7 @@ export async function crawlConferencesByWebsiteId(id: string) {
 }
 
 export async function getAllWebsiteWillCrawl(date: number) {
-  const query = `Select w.id from Websites w where w.isDeleted = 0 AND (w.nextCrawl IS NULL OR w.nextCrawl >= ${date})`;
+  const query = `Select w.id from Websites w where w.isDeleted = 0 AND w.timeCrawl > 0 AND (w.nextCrawl IS NULL OR w.nextCrawl <= ${date})`;
   const websites: { id: number }[] = await connection.query(query, {
     type: QueryTypes.SELECT,
   });

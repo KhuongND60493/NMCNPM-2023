@@ -32,7 +32,6 @@ export const startServer = () => {
       console.log(
         `[Server]: Server Nodejs is running at http://localhost:${port}`,
       );
-      console.log(`[Server]: Check run job`);
       void startJob();
     });
   } catch (error: any) {
